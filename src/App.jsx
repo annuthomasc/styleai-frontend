@@ -4,6 +4,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Wardrobe from './pages/Wardrobe';
 import Suggest from './pages/Suggest';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth();
@@ -16,6 +18,8 @@ function AppRoutes() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:uid/:token" element={<ResetPassword />} />
       <Route path="/wardrobe" element={
         <ProtectedRoute><Wardrobe /></ProtectedRoute>
       } />
@@ -31,8 +35,7 @@ export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <AppRoutes>
-        </AppRoutes>
+        <AppRoutes />
       </BrowserRouter>
     </AuthProvider>
   );
