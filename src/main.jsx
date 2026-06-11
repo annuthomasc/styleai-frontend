@@ -7,7 +7,8 @@ import App from './App.jsx'
 const redirect = sessionStorage.redirect;
 delete sessionStorage.redirect;
 if (redirect && redirect !== location.href) {
-  history.replaceState(null, null, redirect.replace(location.origin + '/styleai-frontend', ''));
+  const url = new URL(redirect);
+  history.replaceState(null, null, url.pathname + url.search + url.hash);
 }
 
 createRoot(document.getElementById('root')).render(
