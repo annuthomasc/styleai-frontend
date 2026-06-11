@@ -33,6 +33,7 @@ export default function Login() {
         <div style={styles.header}>
           <h1 style={styles.logo}>✦ StyleAI</h1>
           <p style={styles.subtitle}>Sign in to your wardrobe</p>
+          <p style={styles.tagline}>AI-powered outfit suggestions from your own wardrobe</p>
         </div>
 
         {error && <div style={styles.error}>{error}</div>}
@@ -96,6 +97,7 @@ const styles = {
   header: { textAlign: 'center', marginBottom: '28px' },
   logo: { fontSize: '28px', color: 'var(--primary)', marginBottom: '6px' },
   subtitle: { color: 'var(--text-muted)', fontSize: '14px' },
+  tagline: { fontSize: '12px', color: 'var(--text-muted)', marginTop: '8px' },
   error: {
     background: '#FEE2E2', color: '#991B1B',
     padding: '10px 14px', borderRadius: '8px',

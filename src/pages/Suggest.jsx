@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
 import api from '../api/axios';
+import Footer from '../components/Footer';
 
 const OCCASIONS = [
   'Casual dinner with friends',
@@ -253,13 +254,14 @@ export default function Suggest() {
         )}
 
       </div>
+      <Footer />
     </div>
   );
 }
 
 const styles = {
-  page: { minHeight: '100vh', background: 'var(--bg)' },
-  container: { maxWidth: '800px', margin: '0 auto', padding: '28px 20px' },
+  page: { minHeight: '100vh', background: 'var(--bg)', display: 'flex', flexDirection: 'column' },
+  container: { maxWidth: '800px', margin: '0 auto', padding: '28px 20px', flex: 1, width: '100%' },
   header: { marginBottom: '20px' },
   title: { fontSize: '22px', fontWeight: 700, marginBottom: '4px' },
   subtitle: { color: 'var(--text-muted)', fontSize: '14px' },

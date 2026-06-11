@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import ClothingCard from '../components/ClothingCard';
 import Navbar from '../components/Navbar';
 import api from '../api/axios';
+import Footer from '../components/Footer';
 
 const CATEGORIES = ['top','bottom','shoes','outerwear','accessory','dress'];
 const STYLES = ['casual','formal','smart-casual','sporty','party'];
@@ -317,13 +318,14 @@ export default function Wardrobe() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
 
 const styles = {
-  page: { minHeight: '100vh', background: 'var(--bg)' },
-  container: { maxWidth: '1100px', margin: '0 auto', padding: '28px 20px' },
+  page: { minHeight: '100vh', background: 'var(--bg)', display: 'flex', flexDirection: 'column' },
+  container: { maxWidth: '1100px', margin: '0 auto', padding: '28px 20px', flex: 1, width: '100%' },
   header: {
     display: 'flex', justifyContent: 'space-between',
     alignItems: 'flex-start', marginBottom: '24px',
