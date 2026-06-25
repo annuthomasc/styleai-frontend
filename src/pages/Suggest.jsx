@@ -184,6 +184,31 @@ export default function Suggest() {
                     {resultOccasion}
                   </strong>
                 </p>
+                
+                {/* RAG Info Panel */}
+                {result.rag_info && (
+                  <div style={styles.ragInfo}>
+                    <div style={styles.ragHeader}>
+                      <span style={styles.ragBadge}>
+                        {result.rag_info.rag_used ? '✦ RAG Active' : '○ RAG Inactive'}
+                      </span>
+                      <span style={styles.ragStats}>
+                        {result.rag_info.rag_used
+                          ? `Retrieved ${result.rag_info.retrieved_items} of ${result.rag_info.total_items} items`
+                          : result.rag_info.reason}
+                      </span>
+                    </div>
+                    {result.rag_info.rag_used && (
+                      <div style={styles.ragBar}>
+                        <div style={{
+                          ...styles.ragFill,
+                          width: `${(result.rag_info.retrieved_items / result.rag_info.total_items) * 100}%`
+                        }} />
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 {result.outfits?.map((outfit, i) => {
                   const outfitItems = (outfit.item_ids || [])
                     .map(id => getItemById(id))
@@ -385,5 +410,27 @@ const styles = {
   empty: {
     textAlign: 'center', padding: '60px 20px',
     color: 'var(--text-muted)',
+  },
+  ragInfo: {
+    background: 'var(--surface)', border: '1px solid var(--border)',
+    borderRadius: '10px', padding: '12px 16px', marginBottom: '16px',
+  },
+  ragHeader: {
+    display: 'flex', justifyContent: 'space-between',
+    alignItems: 'center', marginBottom: '8px',
+  },
+  ragBadge: {
+    fontSize: '12px', fontWeight: 700, color: 'var(--primary)',
+    background: 'var(--white)', border: '1px solid var(--border)',
+    padding: '3px 10px', borderRadius: '20px',
+  },
+  ragStats: { fontSize: '12px', color: 'var(--text-muted)' },
+  ragBar: {
+    height: '6px', background: 'var(--border)',
+    borderRadius: '3px', overflow: 'hidden',
+  },
+  ragFill: {
+    height: '100%', background: 'var(--primary)',
+    borderRadius: '3px', transition: 'width 0.5s ease',
   },
 };
