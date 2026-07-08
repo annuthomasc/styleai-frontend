@@ -238,19 +238,19 @@ export default function Wardrobe() {
                 <div style={styles.field}>
                   <label style={styles.label}>Category</label>
                   <select name="category" value={form.category} onChange={handleChange}>
-                    {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+                    {CATEGORIES.map(c => <option key={c} value={c}>{c.charAt(0).toUpperCase() + c.slice(1)}</option>)}
                   </select>
                 </div>
                 <div style={styles.field}>
                   <label style={styles.label}>Style</label>
                   <select name="style" value={form.style} onChange={handleChange}>
-                    {STYLES.map(s => <option key={s} value={s}>{s}</option>)}
+                    {STYLES.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
                   </select>
                 </div>
                 <div style={styles.field}>
                   <label style={styles.label}>Season</label>
                   <select name="season" value={form.season} onChange={handleChange}>
-                    {SEASONS.map(s => <option key={s} value={s}>{s}</option>)}
+                    {SEASONS.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
                   </select>
                 </div>
                 <div style={styles.field}>
@@ -292,7 +292,7 @@ export default function Wardrobe() {
                 ? { ...styles.filterBtn, ...styles.filterActive }
                 : styles.filterBtn}
             >
-              {cat}
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
             </button>
           ))}
         </div>
